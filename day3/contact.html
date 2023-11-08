@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Contact Me</title>
+        <link rel="stylesheet" href="contact.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <form class="container-form">
+                <label class="label-contact">Name</label>
+                <input type="text" class="input-contact" id="inputName" />
+                <label class="label-contact">Email</label>
+                <input type="text" class="input-contact" id="inputEmail" />
+                <label class="label-contact">Phone number</label>
+                <input type="text" class="input-contact" id="inputPhone"  />
+                <label class="label-contact">Subject</label>
+                <select class="input-contact" id="inputSubject">
+                    <option></option>
+                    <option>Frontend Developer</option>
+                    <option>Backend Developer</option>
+                    <option>Fullstack Developer</option>
+                </select>
+                <label class="label-contact">Your message</label>
+                <textarea class="input-contact" id="inputMessage"></textarea>
+                <input type="button" value="Submit" class="submit-contact" onclick="submitData()" />
+            </form>
+        </div>
+        <script src="contact.js"></script>
+    </body>
+</html>

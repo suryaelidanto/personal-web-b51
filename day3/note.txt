@@ -1,0 +1,9 @@
+ul -> unordered list :
+- Surya
+- Elidanto
+
+ol -> ordered list :
+1. Surya
+2. Elidanto
+
+li -> list item -> isian dari ol maupun ul
