@@ -13,11 +13,18 @@ app.use(express.urlencoded({ extended: false })) // body parser, extended : fals
 app.get('/', home)
 app.get('/contact', contact)
 app.get('/blog', blog)
+app.post('/delete-blog/:id', deleteBlog)
+
 app.get('/add-blog', addBlogView)
 app.post('/add-blog', addBlog)
 
+app.get('/update-blog/:id', updateBlogView)
+app.post('/update-blog', updateBlog)
+
 app.get('/blog-detail/:id', blogDetail)
 app.get('/testimonial', testimonial)
+
+const data = []
 
 function home(req, res) {
     res.render('index')
@@ -28,21 +35,6 @@ function contact(req, res) {
 }
 
 function blog(req, res) {
-    const data = [
-        {
-            title: "Title 1",
-            content: "Content 1"
-        },
-        {
-            title: "Title 2",
-            content: "Content 2"
-        },
-        {
-            title: "Title 3",
-            content: "Content 3"
-        }
-    ]
-
     res.render('blog', { data })
 }
 
@@ -53,9 +45,45 @@ function addBlogView(req, res) {
 function addBlog(req, res) {
     const { title, content } = req.body
 
-    alert("Title :", title)
-    alert("Content :", content)
-    res.redirect('blog')
+    console.log("Title :", title)
+    console.log("Content :", content)
+
+    const dataBlog = { title, content }
+
+    data.unshift(dataBlog)
+    res.redirect('/blog')
+}
+
+function updateBlogView(req, res) {
+    const { id } = req.params
+
+    const dataFilter = data[parseInt(id)]
+    dataFilter.id = parseInt(id)
+    console.log("dataFilter", dataFilter)
+    res.render('update-blog', { data: dataFilter })
+}
+
+function updateBlog(req, res) {
+    const { title, content, id } = req.body
+
+    console.log("Id :", id)
+    console.log("Title :", title)
+    console.log("Content :", content)
+
+    data[parseInt(id)] = {
+        title, 
+        content,
+    }
+    
+    res.redirect('/blog')
+}
+
+
+function deleteBlog(req, res) {
+    const { id } = req.params
+
+    data.splice(id, 1)
+    res.redirect('/blog')
 }
 
 function blogDetail(req, res) {
