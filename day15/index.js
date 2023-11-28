@@ -49,7 +49,7 @@ async function blog(req, res) {
     // console.log("data blog", data)
 
     // res.render('blog', { data })
-    res.render('blog', { data: obj[0] })
+    res.render('blog', { data: obj })
 }
 
 function addBlogView(req, res) {
