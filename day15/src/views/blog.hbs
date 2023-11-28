@@ -50,6 +50,17 @@
                         <a class="nav-link" href="/testimonial">Testimonial</a>
                     </li>
                 </ul>
+
+                {{#if isLogin}}
+                <p>Welcome, {{user.name}}</p>
+                <button>Logout</button>
+                {{else}}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+                {{/if}}
+
+
+
                 <a href="/contact" class="btn btn-primary">Contact Me</a>
             </div>
         </div>
